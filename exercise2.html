@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<script>
+	
+var keyword = $("input:text"); 
+var api = "https://www.googleapis.com/books/v1/volumes?q=subject"; 
+var results = api + ":" + keyword
+
+	$("input:button".click(function()){$.get(results),{}, function(data(){
+		$.each(data.items.slice(0,19), function(index, value) {
+            var img = $('<img>');
+            img.attr('src', value.volumeInfo.imageLinks.thumbnail);
+            img.appendTo('#image-div');
+          });
+        });
+      });
+
+	</script>
+	</head>
+	<body>
+		<div id='image-div'>
+		<input type="text"></input>
+		<input type="button" value="Search" onclick="function()"></input>
+		<script src = http://code.jquery.com/jquery.js></script>
+
+	</body>
+</html>
+
+
+//Create a search button and text field
+//When user inputs a search query and presses on the search button, the page gets the Google Books API, and searches the keyword. Then, it will display the results with the author, title, etc. There is also a more button that will display the next results 
